@@ -18,7 +18,7 @@ const SplashScreen= ({navigation})=> {
     const checkInternetConnection = async () => {
       const state = await NetInfo.fetch();
       if (state.isConnected) {
-        navigation.replace('AuthStack'); // or 'HomeStack' based on your logic
+        navigation.replace('AuthStack'); 
       } else {
         Alert.alert('No Internet', 'Please check your internet connection and try again.');
       }
@@ -26,7 +26,7 @@ const SplashScreen= ({navigation})=> {
 
     const timer = setTimeout(() => {
       checkInternetConnection();
-    }, 3000); // 3 seconds delay
+    }, 2000); // 2 seconds delay Splashscreen loading
 
     return () => clearTimeout(timer);
   }, [navigation]);

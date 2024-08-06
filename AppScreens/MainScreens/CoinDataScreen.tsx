@@ -15,7 +15,7 @@ const CoinDataScreen = () => {
 
         <View style={styles.main}>
             <View style={{ flex: .8, }}>
-                <CustomeScreen ScreenName={'Bitcoin'} style={{ margin: 60 }} imagePath={undefined} SecondIcon={true} ScreenLogo={false} IconName={'heart-outlined'} />
+                <CustomeScreen ScreenName={'Bitcoin'} style={{ TextMargin: 60 }} imagePath={undefined} SecondIcon={true} ScreenLogo={false} IconName={'heart-outlined'} />
             </View>
 
             <View style={{ flex: 10 }}>

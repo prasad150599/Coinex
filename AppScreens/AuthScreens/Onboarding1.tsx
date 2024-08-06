@@ -51,12 +51,12 @@ const Onboarding1 = (props: Props) => {
                     </View>
 
                     <View style={{ marginBottom: 20 }}>
-                        <CustomButton title={'Get Started'} style={{ width: '80%', backgroundColor: '#34D9D1', }} />
+                        <CustomButton title={'Get Started'} style={{ backgroundColor: '#34D9D1', }} />
                     </View>
 
                 </View>
 
-                <CustomButton title={'Skip'} style={{ height: 50, width: '35%', }}
+                <CustomButton title={'Skip'} style={{ width: '35%', }}
                  color1="#FF9BD0" color2="#FF73AA"  onp={()=>{navigation.navigate('WelcomeLogin');}} />
 
             </View>

@@ -13,7 +13,7 @@ const Notification = () => {
         <View style={{ flex: 1 }}>
 
             <View style={{ flex: 1 }}>
-            <CustomeScreen ScreenName={'Notification'}  style={{margin:20}} SecondIcon={false} ScreenLogo={false} />
+            <CustomeScreen ScreenName={'Notification'} style={{ TextMargin: 20 }} SecondIcon={false} ScreenLogo={false} imagePath={undefined} IconName={undefined} />
 
             </View>
             <TouchableOpacity style={{ flex: 12,marginTop:20}}>

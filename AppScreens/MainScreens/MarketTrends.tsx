@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, FlatList, ActivityIndicator, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -40,7 +40,7 @@ const MarketTrends = () => {
             </View>
             <View style={{ flex: 2, alignItems: 'flex-end' }}>
                 <Text style={{ marginRight: 20, fontSize: 20, color: '#ffffff', fontWeight: 'bold' }}>₹ {item.current_price}</Text>
-                <Text style={{ marginTop:10,marginRight: 20, fontSize: 16, color: '#ffffff' }}>{item.ath_change_percentage} %</Text>
+                <Text style={{ marginTop: 10, marginRight: 20, fontSize: 16, color: '#ffffff' }}>{item.ath_change_percentage} %</Text>
             </View>
         </View>
     )
@@ -54,28 +54,33 @@ const MarketTrends = () => {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#191C26' }}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-            <ScrollView>
-                <View style={{ marginBottom: '10%' }}>
-                    <CustomeScreen ScreenName={"Market Trends"} style={{ margin: 20 }}
-                        imagePath={undefined}
-                        SecondIcon={true} ScreenLogo={false} />
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#191C26' }}>
+
+
+                <View style={{ flex: 1 }}>
+                    <CustomeScreen ScreenName={"Market Trends"} style={{ TextMargin: 20 }}
+                        imagePath={undefined} SecondIcon={false} ScreenLogo={false} />
                     <CustomInput iconName={'search'} placeholderText={'Search'} secureText={false}
-                        typing={(text: any) => { text; }} keyboardType={"default"} IconColor={"#4DE0D9"} />
+                        typing={(text: any) => { text }} keyboardType={"default"} IconColor={"#4DE0D9"} />
                 </View>
-            </ScrollView>
-            <FlatList
-                data={data}
-                keyExtractor={(item: any) => item.id}
-                renderItem={renderItem}
-                ListEmptyComponent={renderEmptyComponent}
-                // keyExtractor={(item, index) => index.toString()}
-            />
+
+                <View style={{ flex: 4 }}>
+
+                    <FlatList
+                        data={data}
+                        keyExtractor={(item: any) => item.id}
+                        renderItem={renderItem}
+                        ListEmptyComponent={renderEmptyComponent}
+                    // keyExtractor={(item, index) => index.toString()}
+                    />
+                </View>
 
 
+            </SafeAreaView>
+        </TouchableWithoutFeedback>
 
-        </SafeAreaView>
     );
 }
 

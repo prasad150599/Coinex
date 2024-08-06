@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState  } from 'react';
 import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity, Alert, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -33,9 +33,9 @@ const CustomInput = (props: Props) => {
 
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', margin: 10 }}>
+        <View style={{justifyContent: 'center', alignItems: 'center', marginTop:20,marginBottom:20,  }}>
 
-            <View style={{ flexDirection: 'row', width: props.style?.width || '90%', backgroundColor: props.style?.backgroundColor || '#ffffff', height: 60, borderRadius: 30, }}>
+            <View style={{ flexDirection: 'row', width: props.style?.width || '80%', backgroundColor: props.style?.backgroundColor || '#ffffff', height: 50, borderRadius: 30, }}>
                 <View style={{ flex: 1, justifyContent:'center', alignItems:'center' }}>
                     <TouchableOpacity onPress={() => setShow(!show)} >
                         <Icon name={props.iconName} size={30} color={props?.IconColor || '#FE8270'} />
@@ -44,11 +44,12 @@ const CustomInput = (props: Props) => {
                 <TextInput
                     style={{
                         width: '80%', height: '100%', paddingLeft: 10, fontSize: 18,
-                        borderTopRightRadius: 30, borderBottomRightRadius: 30
+                        borderTopRightRadius: 30, borderBottomRightRadius: 30,color:'#000000'
                     }}
                     placeholder={props.placeholderText} secureTextEntry={show}
                     onChangeText={props?.typing}
                     keyboardType={props?.keyboardType || "default"}
+                    maxLength={20}
                 />
             </View>
 

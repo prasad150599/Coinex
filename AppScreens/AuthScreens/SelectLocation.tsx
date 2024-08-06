@@ -55,7 +55,7 @@ const cities = {
 const SelectLocation = () => {
 
     const navigation = useNavigation();
-    
+
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [selectedCity, setSelectedCity] = useState(null);
     const [openCountry, setOpenCountry] = useState(false);
@@ -72,11 +72,11 @@ const SelectLocation = () => {
     return (
 
         <View style={styles.container}>
-            <View style={{ flex: 1,marginTop:10}}>
-                <CustomeScreen ScreenName={'Select Location'} imagePath={require('../../Resources/Images/LocationLogo.png')} SecondIcon={false} ScreenLogo={true} />
+            <View style={{ flex: 2}}>
+                <CustomeScreen ScreenName={'Select Location'} style={{TextMargin:20}} imagePath={require('../../Resources/Images/LocationLogo.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
             </View>
 
-            <View style={{ flex: 1,justifyContent:'center' }}>
+            <View style={{ flex: 2, justifyContent: 'flex-start'}}>
 
                 <DropDownPicker
                     open={openCountry}
@@ -89,30 +89,26 @@ const SelectLocation = () => {
                     style={styles.dropdown}
                     listItemLabelStyle={styles.listItemLabelStyle}
                     dropDownContainerStyle={styles.dropdownContainer}
-                    textStyle={{ fontSize: 20,textAlign:'center' }}
+                    textStyle={{ fontSize: 20, textAlign: 'center' }}
                 />
+                <DropDownPicker
+                    open={openCity}
+                    value={selectedCity}
+                    items={cityItems}
+                    setOpen={setOpenCity}
+                    setValue={setSelectedCity}
+                    setItems={setCityItems}
+                    placeholder="Select a city"
+                    style={styles.dropdown}
+                    listItemLabelStyle={styles.listItemLabelStyle}
+                    dropDownContainerStyle={styles.dropdownContainer}
+                    textStyle={{ fontSize: 20, textAlign: 'center' }}
+                    zIndex={1000}
 
-                
-                    
-
-                        <DropDownPicker
-                            open={openCity}
-                            value={selectedCity}
-                            items={cityItems}
-                            setOpen={setOpenCity}
-                            setValue={setSelectedCity}
-                            setItems={setCityItems}
-                            placeholder="Select a city"
-                            style={styles.dropdown}
-                            listItemLabelStyle={styles.listItemLabelStyle}
-                            dropDownContainerStyle={styles.dropdownContainer}
-                            textStyle={{ fontSize: 20,textAlign:'center' }}
-                            zIndex={1000}
-
-                        />
-                 
-
-                <CustomButton title={'Continue'} style={{width:'100%',height:62}} onp={()=>{navigation.navigate('HomeStack',{Screen:'Home'})}}/>
+                />
+            </View>
+            <View style={{ flex: 1 ,justifyContent:'center'}}>
+                <CustomButton title={'Continue'}  onp={() => { navigation.navigate('HomeStack', { Screen: 'Home' }) }} />
             </View>
         </View>
 
@@ -122,7 +118,7 @@ const SelectLocation = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:'#191C26'
+        backgroundColor: '#191C26'
     },
     label: {
         fontSize: 20,
@@ -130,24 +126,29 @@ const styles = StyleSheet.create({
         color: '#ffffff'
     },
     dropdown: {
-        marginBottom: 20,
+        marginTop: 20,
         fontSize: 20,
         backgroundColor: '#ffffff',
-        height: 60,
-        borderRadius: 30
+        height: 50,
+        borderRadius: 30,
+        width: '80%',
+        alignSelf: 'center'
 
     },
     dropdownContainer: {
-        marginTop: 2,
+        marginTop: 22,
         fontSize: 20,
-        borderRadius: 20
+        borderRadius: 20,
+        width: '80%',
+        alignSelf: 'center'
+
     },
     listItemLabelStyle: {
         color: '#000000', // Individual item text color
         fontSize: 20,
-        textAlign:'center'
+        textAlign: 'center'
     },
-    
+
 });
 
 export default SelectLocation;

@@ -26,7 +26,7 @@ const CustomButton = (props: Props) => {
    
         <LinearGradient  colors={[color1,color2]}
         style={{alignSelf:"center",justifyContent: 'center', alignItems: 'center',margin:10,
-                 borderRadius:30,height: props.style?.height || 60, width:props.style?.width || '80%'}}>
+                 borderRadius:30,height: props.style?.height || 50, width:props.style?.width || '80%'}}>
             <TouchableOpacity style={{height:50,width:'90%',justifyContent: 'center', alignItems: 'center',}} 
             onPress={props?.onp}>
             <Text style={{color:props?.style?.TextColor || "#ffffff",fontSize:props?.style?.fontsize  || 20,fontWeight:'bold'}}>{title || "Click Here"}</Text>

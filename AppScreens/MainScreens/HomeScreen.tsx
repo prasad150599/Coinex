@@ -14,20 +14,21 @@ const HomeScreen = () => {
     const navigation = useNavigation();
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#191C26' }}>
-            <ScrollView>
 
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <TouchableOpacity style={{ margin: '5%', alignSelf: 'flex-start' }} onPress={()=>{navigation.navigate('Profile')}}>
-                        <Icon name='menu' size={30} color='#ffffff' />
-                    </TouchableOpacity>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <TouchableOpacity style={{ margin: '5%', alignSelf: 'flex-start' }} onPress={() => { navigation.navigate('Profile') }}>
+                    <Icon name='menu' size={30} color='#ffffff' />
+                </TouchableOpacity>
 
-                    <Text style={{ fontSize: 24, fontWeight:'bold', color: '#4DE0D9', textAlign: 'center', margin: '5%' }}> Coinex</Text>
-                   
-                    <TouchableOpacity style={{ margin: '5%', alignSelf: 'flex-start' }} onPress={()=>{navigation.navigate('Notification')}}>
-                        <Icon name='bell' size={30} color='#ffffff' />
-                    </TouchableOpacity>
-                </View>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#4DE0D9', textAlign: 'center', margin: '5%' }}> Coinex</Text>
 
+                <TouchableOpacity style={{ margin: '5%', alignSelf: 'flex-start' }} onPress={() => { navigation.navigate('Notification') }}>
+                    <Icon name='bell' size={30} color='#ffffff' />
+                </TouchableOpacity>
+            </View>
+
+            <ScrollView style={{ flex: 4 }}>
+                
                 <View style={{ flex: 1, margin: '5%' }}>
                     <Text style={styles.UserName}>Hi User ,</Text>
                     <Text style={styles.GreetText}>Good Morning</Text>
@@ -38,7 +39,7 @@ const HomeScreen = () => {
 
                 <View style={styles.PortfolioTextView}>
                     <Text style={styles.SectionText}>Portfolio</Text>
-                    <TouchableOpacity style={{ backgroundColor: '#1E2230' }} onPress={()=>{navigation.navigate('Portfolio')}}>
+                    <TouchableOpacity style={{ backgroundColor: '#1E2230' }} onPress={() => { navigation.navigate('Portfolio') }}>
                         <Text style={styles.SectionText}>View All+</Text>
                     </TouchableOpacity>
                 </View>
@@ -67,7 +68,7 @@ const HomeScreen = () => {
                 </View>
                 <View style={{ margin: 10, marginTop: 0, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={styles.SectionText}>Market</Text>
-                    <TouchableOpacity style={{ backgroundColor: '#1E2230' }} onPress={()=>{navigation.navigate('Market')}}>
+                    <TouchableOpacity style={{ backgroundColor: '#1E2230' }} onPress={() => { navigation.navigate('Market') }}>
                         <Text style={styles.SectionText}>View All+</Text>
                     </TouchableOpacity>
                 </View>

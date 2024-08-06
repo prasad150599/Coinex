@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Image, KeyboardAvoidingView, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
+import { Button, Image, Keyboard, KeyboardAvoidingView, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, } from 'react-native';
 import CustomeScreen from "../../CustomComponents/CustomScreen";
 import CustomButton from "../../CustomComponents/CustomButton";
 import CountryCodeModal from "../../CustomComponents/CountryCodeModal";
@@ -58,11 +58,11 @@ const SetUserInfo = (prop: any) => {
     const SetData = async () => {
         await AsyncStorage.setItem('username', username)
         await AsyncStorage.setItem('emailid', emailid)
-        console.warn(username,"|",emailid);
+        console.warn(username, "|", emailid);
     }
 
     function SetUsername() {
-        if ((username != '') && (emailid !='')) {
+        if ((username != '') && (emailid != '')) {
             console.log("data is  set");
             SetData();
             navigation.navigate('CreatePassw');
@@ -71,29 +71,31 @@ const SetUserInfo = (prop: any) => {
 
 
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: '#191C26' }}>
-            <View style={{ flex: 1 }}>
-                <CustomeScreen ScreenName={'User Info'} style={{ margin: 40 }} imagePath={require('../../Resources/Images/PasswScreenLogo.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
-                <Text style={{ fontSize: 22, fontWeight: 'bold', color: "#ffffff", textAlign: 'center', marginTop: 20 }}> Set User Information </Text>
-            </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-            <View style={{ flex: 1, justifyContent: 'space-around' }}>
-                <View style={{ flex: 1, marginTop: 20}}>
+            <ScrollView style={{ flex: 1, backgroundColor: '#191C26' }}>
+
+                <View style={{ flex: 2 }}>
+                    <CustomeScreen ScreenName={'User Info'} style={{ TextMargin: 40 }} imagePath={require('../../Resources/Images/PasswScreenLogo.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
+                </View>
+
+                <View style={{ flex: 2 }}>
+
+                    <Text style={{ fontSize: 22, fontWeight: 'bold', color: "#ffffff", textAlign: 'center', marginTop: 20 }}> Set User Information </Text>
 
                     <CustomInput iconName={'user'} secureText={false} placeholderText={'username'}
                         typing={(val: any) => { setUsername(val); }} keyboardType={'default'} IconColor={'#FE8270'} />
 
                     <CustomInput iconName={'envelope'} placeholderText={'e-mail'} secureText={false}
                         typing={(val: any) => { setEmailid(val) }} keyboardType={'email-address'} IconColor={'#FE8270'} />
-
-                </View>
-               
-                <View style={{ marginTop: '20%' }}>
-                    <CustomButton title={'Set Username'} style={{ width: '85%' }} onp={SetUsername} />
                 </View>
 
-            </View>
-        </ScrollView>
+                <View style={{ flex: 1, justifyContent: 'center' }}>
+                    <CustomButton title={'Set Username'} style={{ width: '80%' }} onp={SetUsername} />
+                </View>
+
+            </ScrollView>
+        </TouchableWithoutFeedback>
     );
 }
 

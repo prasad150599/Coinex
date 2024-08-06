@@ -6,7 +6,7 @@
  */
 
 import React, { useState } from 'react';
-import { Alert, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
+import { Alert, Image, Keyboard, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, } from 'react-native';
 import CustomButton from '../../CustomComponents/CustomButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import BackButton from '../../CustomComponents/BackButton';
@@ -47,44 +47,45 @@ const SignInScreen = (props: any) => {
 
 
   return (
-    <ScrollView style={styles.main}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-      <View style={styles.header}>
-        <CustomeScreen ScreenName={'Sign In'} style={{ margin: 50 }} imagePath={require('../../Resources/Images/Illustration.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
-      </View>
+      <ScrollView style={styles.main}>
+
+        <View style={styles.header}>
+          <CustomeScreen ScreenName={'Sign In'} style={{ TextMargin: 50 }} imagePath={require('../../Resources/Images/Illustration.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
+        </View>
 
 
-      <View style={{ flex: 4, marginTop: '10%', }}>
+        <View style={{ flex: 4, marginTop: '10%', }}>
 
-        <CustomInput iconName={'envelope'} placeholderText={'e-mail'} secureText={false}
-          typing={(val: any) => { setUsername(val) }} keyboardType={'email-address'} IconColor={'#FE8270'} />
+          <CustomInput iconName={'envelope'} placeholderText={'e-mail'} secureText={false}
+            typing={(val: any) => { setUsername(val) }} keyboardType={'email-address'} IconColor={'#FE8270'} />
 
-        <CustomInput iconName={'lock'} placeholderText={'password'} secureText={true}
-          typing={(val: any) => { setPassword(val) }} keyboardType={'default'} IconColor={'#FE8270'} />
+          <CustomInput iconName={'lock'} placeholderText={'password'} secureText={true}
+            typing={(val: any) => { setPassword(val) }} keyboardType={'default'} IconColor={'#FE8270'} />
 
-        <View style={styles.OptionView}>
-          <View >
-            <Text style={{ fontSize: 16, color: '#ffffff' }}>Remember me</Text>
+          <View style={styles.OptionView}>
+            <View >
+              <Text style={{ fontSize: 16, color: '#ffffff' }}>Remember me</Text>
+            </View>
+            <TouchableOpacity onPress={() => {
+              navigation.navigate('AuthStack', { screen: 'ForgotPassw' });
+            }}>
+              <Text style={{ fontSize: 16, color: '#FDAE67' }}>Forgot password ?</Text>
+            </TouchableOpacity>
+
           </View>
-          <TouchableOpacity onPress={() => {
-            navigation.navigate('AuthStack', { screen: 'ForgotPassw' });
-          }}>
-            <Text style={{ fontSize: 16, color: '#FDAE67' }}>Forgot password ?</Text>
-          </TouchableOpacity>
+          <CustomButton title={'Sign in'} onp={AuthUserLogin} />
 
         </View>
 
-        <CustomButton title={'Sign in'} style={{ width: '85%' }} onp={AuthUserLogin} />
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: '10%' }}>
 
-        <View style={{ flex: 1, marginTop: '40%', alignItems: 'center' }}>
           <Text style={{ fontSize: 16, color: '#ffffff' }}> Already have not an account? <Text style={{ fontSize: 16, color: '#FDAE67' }}>Sign Up !</Text></Text>
-
         </View>
-      </View>
 
-
-
-    </ScrollView>
+      </ScrollView>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -94,9 +95,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#191C26'
   },
   header: {
-    flex: 1,
+    flex: 2,
     alignItems: 'center',
-    marginTop: '2%',
     flexDirection: 'row'
   },
   screenName: {
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   OptionView: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginBottom: '2%'
+    marginBottom: '1%'
   }
 
 });

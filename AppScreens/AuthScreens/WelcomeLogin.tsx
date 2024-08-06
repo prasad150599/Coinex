@@ -26,7 +26,7 @@ const WelcomeLogin = (props: Props) => {
     return (
         <SafeAreaView style={styles.main}>
 
-            <View style={{ flex: 2, alignItems: 'center', marginTop: '20%' }}>
+            <View style={{ flex: 1, alignItems: 'center', marginTop: '10%' }}>
 
                 <View style={styles.card}>
                     <Image source={require('../../Resources/Images/image2.png')} style={{ height: 206, width: 206 }} />
@@ -41,10 +41,11 @@ const WelcomeLogin = (props: Props) => {
                         <Text style={{ fontSize: 18, color: '#ffffff', textAlign: 'center' }}>Deliver your Order around the world {'\n'} without hesitation</Text>
                     </View>
 
-                        <CustomButton title={'Login'} style={{ height: 60, width: '90%', }} color1="#C1B2FF" color2="#9B87FF"
+                        <CustomButton title={'Login'} style={{ height: 60, width: '80%', }} color1="#C1B2FF" color2="#9B87FF"
                           onp={()=>{navigation.navigate('SignIn')}} />
 
-                        <CustomButton title={'Register'} style={{ height: 60, width: '90%' }}  onp={()=>{navigation.navigate('SignInMob')}}/>
+                        <CustomButton title={'Register'} style={{ height: 60, width: '80%' }}  
+                        onp={()=>{navigation.navigate('SignInMob')}}/>
                 </View>
             </View>
         </SafeAreaView>
@@ -59,11 +60,9 @@ const styles = StyleSheet.create({
     },
     
     card: {
-
-        height: 353,
+        height: "40%",
         width: '76%',
         backgroundColor: '#111319',
-        marginBottom: 30,
         borderRadius: 20, justifyContent: 'center',
         alignItems: 'center'
 

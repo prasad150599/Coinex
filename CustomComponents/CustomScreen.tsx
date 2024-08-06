@@ -13,7 +13,7 @@ export type Props = {
   //   backgroundColor?: "red" | "green" | "blue" | String;
   //   width?: String | Number;
   //   height?: String | Number;
-       margin: Number | String;
+       TextMargin: Number | String;
   }
   onp?: Function;
   imagePath: String;
@@ -37,7 +37,7 @@ const CustomeScreen = (props: Props) => {
         </View>
         <View style={{ flex: 3, justifyContent: 'center' }}>
           <Text 
-          style={{marginLeft: props.style?.margin , fontSize: 30, color: '#ffffff', alignSelf: 'flex-start' }}>
+          style={{marginLeft: props.style?.TextMargin, fontSize: 26, color: '#ffffff', alignSelf: 'flex-start' }}>
             {props.ScreenName || 'Screen Name'}</Text>
         </View>
         {

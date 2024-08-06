@@ -40,7 +40,7 @@ const Portfolio = () => {
             </View>
             <View style={{ flex: 2, alignItems: 'flex-end' }}>
                 <Text style={{ marginRight: 20, fontSize: 20, color: '#ffffff', fontWeight: 'bold' }}>₹ {item.current_price}</Text>
-                <Text style={{ marginTop:10,marginRight: 20, fontSize: 16, color: '#ffffff' }}>{item.ath_change_percentage} %</Text>
+                <Text style={{ marginTop: 10, marginRight: 20, fontSize: 16, color: '#ffffff' }}>{item.ath_change_percentage} %</Text>
             </View>
         </View>
     )
@@ -54,54 +54,52 @@ const Portfolio = () => {
     };
 
     return (
-    
-        
+
+
         <SafeAreaView style={{ flex: 1, backgroundColor: '#191C26' }}>
-            <View style={{ flex: 1 }}>
-
-                <View style={{flex:1}}>
-                <CustomeScreen ScreenName={"Portfolio"} style={{ margin: 60 }}
-                        imagePath={undefined}
-                        SecondIcon={true} IconName={"dots-three-vertical"}/>
+           
+                <View style={{ flex: .6,}}>
+                <CustomeScreen ScreenName={"Portfolio"} style={{ TextMargin: 60 }}
+                        ScreenLogo={false} imagePath={undefined} 
+                        SecondIcon={true} IconName={"dots-three-vertical"} />
                 </View>
-                <View style={{flex:4,backgroundColor:'#191C26'}}>
                     
-                 <View style={{ width: '90%', height: 180, backgroundColor: '#363D4E', alignSelf: 'center', borderRadius: 20 }}> 
-                    <View style={{ margin: 10, alignSelf: 'flex-start' }}>
-                        <CustomButton title={'BTC/USD'} style={{ width: 110, height: 40, fontsize: 18 }} color1="#C1B2FF" color2="#9B87FF" />
-                    </View>
-                    <View style={{ flexDirection: 'row' }}>
-                        <View style={{ flex: 2, alignItems: 'flex-start' }}>
-                            <Text style={{ marginLeft: 20, fontSize: 24, color: '#ffffff', fontWeight: 'bold' }}>$ 75863.00</Text>
-                            <Text style={{ marginTop: 14, marginLeft: 20, fontSize: 16, color: '#ffffff' }}>+ $120.97 (+3.46 %)</Text>
+    
+                <View style={{ flex: 2, backgroundColor: '#191C26' }}>
+
+                    <View style={{ width: '90%', height: 160, backgroundColor: '#363D4E', alignSelf: 'center', borderRadius: 20 }}>
+                        <View style={{ margin: 10, alignSelf: 'flex-start' }}>
+                            <CustomButton title={'BTC/USD'} style={{ width: 110, height: 40, fontsize: 18 }} color1="#C1B2FF" color2="#9B87FF" />
                         </View>
-                        <View style={{ marginRight: 20 }}>
-                            <CustomButton title={'Add Balance'} style={{ width: 120, height: 40, fontsize: 17 }} color1="#FF9BD0" color2="#FF73AA" />
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{ flex: 2, alignItems: 'flex-start' }}>
+                                <Text style={{ marginLeft: 20, fontSize: 24, color: '#ffffff', fontWeight: 'bold' }}>$ 75863.00</Text>
+                                <Text style={{ marginTop: 14, marginLeft: 20, fontSize: 16, color: '#ffffff' }}>+ $120.97 (+3.46 %)</Text>
+                            </View>
+                            <View style={{ marginRight: 20 }}>
+                                <CustomButton title={'Add Balance'} style={{ width: 120, height: 40, fontsize: 17 }} color1="#FF9BD0" color2="#FF73AA" />
+                            </View>
                         </View>
                     </View>
-                 </View>
-                 <View style={{  flexDirection: 'row', justifyContent: 'space-evenly', height: 100 ,width:'100%'}}>
-                    <CustomButton title={'Highest Holding'} style={{width:'46%',height:50,fontsize:20}}/>
-                    <CustomButton title={'24 Hours'} style={{width:'48%',height:50, fontsize:20}} color1='#C1B2FF' color2='#9B87FF'/>
-                </View>
-               
-                </View>
-                
-                <View style={{flex:6,backgroundColor:'#191C26'}}>
-                <FlatList
-                data={data}
-                keyExtractor={(item: any) => item.id}
-                renderItem={renderItem}
-                ListEmptyComponent={renderEmptyComponent}
-            />
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', height: 100, width: '100%' }}>
+                        <CustomButton title={'Highest Holding'} style={{ width: '46%', height: 50, fontsize: 20 }} />
+                        <CustomButton title={'24 Hours'} style={{ width: '48%', height: 50, fontsize: 20 }} color1='#C1B2FF' color2='#9B87FF' />
+                    </View>
+
                 </View>
 
-           
-            
-            </View>
-           
+                <View style={{ flex: 3, backgroundColor: '#191C26' }}>
+                    <FlatList
+                        data={data}
+                        keyExtractor={(item: any) => item.id}
+                        renderItem={renderItem}
+                        ListEmptyComponent={renderEmptyComponent}
+                    />
+                </View>
+
         </SafeAreaView>
-        
+
     );
 }
 
