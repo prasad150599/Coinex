@@ -74,19 +74,17 @@ const Portfolio = () => {
                         <View style={{ flexDirection: 'row' }}>
                             <View style={{ flex: 2, alignItems: 'flex-start' }}>
                                 <Text style={{ marginLeft: 20, fontSize: 24, color: '#ffffff', fontWeight: 'bold' }}>$ 75863.00</Text>
-                                <Text style={{ marginTop: 14, marginLeft: 20, fontSize: 16, color: '#ffffff' }}>+ $120.97 (+3.46 %)</Text>
+                                <Text style={{ marginTop: 14, marginLeft: 20, fontSize: 14, color: '#ffffff' }}>+ $120.97 (+3.46%)</Text>
                             </View>
                             <View style={{ marginRight: 20 }}>
                                 <CustomButton title={'Add Balance'} style={{ width: 120, height: 40, fontsize: 17 }} color1="#FF9BD0" color2="#FF73AA" />
                             </View>
                         </View>
                     </View>
-
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', height: 100, width: '100%' }}>
                         <CustomButton title={'Highest Holding'} style={{ width: '46%', height: 50, fontsize: 20 }} />
                         <CustomButton title={'24 Hours'} style={{ width: '48%', height: 50, fontsize: 20 }} color1='#C1B2FF' color2='#9B87FF' />
                     </View>
-
                 </View>
 
                 <View style={{ flex: 3, backgroundColor: '#191C26' }}>

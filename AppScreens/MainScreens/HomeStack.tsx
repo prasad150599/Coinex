@@ -12,13 +12,14 @@ import Profile from './Profile';
 import Notification from './Notification';
 import Settings from './Settings';
 import SettingsScreen from './Settings';
+import QRScanner from './Scanner';
 
 
 const HomeStackNavigator = createNativeStackNavigator();
 
 const HomeStack = () => {
 
-    const navigation = useNavigation();
+    const navigation:any = useNavigation();
 
 
     return (
@@ -33,7 +34,7 @@ const HomeStack = () => {
                     <HomeStackNavigator.Screen name="Portfolio" component={Portfolio} options={{ headerShown: false }} />
                     <HomeStackNavigator.Screen name="Notification" component={Notification} options={{ headerShown: false }} />
                     <HomeStackNavigator.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
-
+                    <HomeStackNavigator.Screen name="Scanner" component={QRScanner} options={{ headerShown: false }} />
                   </HomeStackNavigator.Navigator>
             </View>
 
@@ -49,7 +50,7 @@ const HomeStack = () => {
                     <Icon name='chart-areaspline' size={30} color='#34D9D1' />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{navigation.navigate('Scanner')}}>
                     <Icon name='plus' size={80} color='#34D9D1' />
                 </TouchableOpacity>
 

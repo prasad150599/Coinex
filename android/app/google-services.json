@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "222109794459",
+    "project_id": "coinex-2ff91",
+    "storage_bucket": "coinex-2ff91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222109794459:android:9e02795fc9c9e9c1ac063e",
+        "android_client_info": {
+          "package_name": "com.coinex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpY97393nuXDeSABNcU2miVHGEto7XtA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

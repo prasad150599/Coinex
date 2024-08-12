@@ -47,14 +47,12 @@ const cities = {
         { label: 'Pune', value: 'pune' },
         { label: 'Jaipur', value: 'jaipur' }
     ],
-
-    // Add more country-city mappings as needed
 };
 
 
 const SelectLocation = () => {
 
-    const navigation = useNavigation();
+    const navigation:any = useNavigation();
 
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [selectedCity, setSelectedCity] = useState(null);
@@ -89,7 +87,7 @@ const SelectLocation = () => {
                     style={styles.dropdown}
                     listItemLabelStyle={styles.listItemLabelStyle}
                     dropDownContainerStyle={styles.dropdownContainer}
-                    textStyle={{ fontSize: 20, textAlign: 'center' }}
+                    textStyle={{ fontSize: 20, textAlign: 'center' ,color:'#ffffff'}}
                 />
                 <DropDownPicker
                     open={openCity}
@@ -102,13 +100,12 @@ const SelectLocation = () => {
                     style={styles.dropdown}
                     listItemLabelStyle={styles.listItemLabelStyle}
                     dropDownContainerStyle={styles.dropdownContainer}
-                    textStyle={{ fontSize: 20, textAlign: 'center' }}
+                    textStyle={{ fontSize: 20, textAlign: 'center',color:'#ffffff' }}
                     zIndex={1000}
-
                 />
             </View>
             <View style={{ flex: 1 ,justifyContent:'center'}}>
-                <CustomButton title={'Continue'}  onp={() => { navigation.navigate('HomeStack', { Screen: 'Home' }) }} />
+                <CustomButton title={'Continue'}  onp={()=>{navigation.navigate('HomeStack',{Screen:'Home'})}} />
             </View>
         </View>
 
@@ -128,23 +125,23 @@ const styles = StyleSheet.create({
     dropdown: {
         marginTop: 20,
         fontSize: 20,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#111319',
         height: 50,
         borderRadius: 30,
         width: '80%',
-        alignSelf: 'center'
-
+        alignSelf: 'center',
+        color: '#ffffff'
     },
     dropdownContainer: {
         marginTop: 22,
         fontSize: 20,
         borderRadius: 20,
         width: '80%',
-        alignSelf: 'center'
-
+        alignSelf: 'center',
+        backgroundColor: '#111319',
     },
     listItemLabelStyle: {
-        color: '#000000', // Individual item text color
+        color: '#ffffff', // Individual item text color
         fontSize: 20,
         textAlign: 'center'
     },

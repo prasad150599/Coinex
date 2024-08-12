@@ -37,7 +37,6 @@ const Chart = (props: Props) => {
                                         labelTextSize: 16, // Set the size of the label text
                                     }
                                 },
-
                             ]
                         }
                     }
@@ -59,7 +58,6 @@ const Chart = (props: Props) => {
                             enabled: false, // Disable y-axis labels on the right
                         },
                     }}
-
                 />
             </View>
         </View>

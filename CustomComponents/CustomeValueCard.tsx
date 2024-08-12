@@ -5,13 +5,13 @@ import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity, Alert, Pre
 
 export type Props = {
 
-    Card1Title: string  | number;
-    Card2Title: string  | number;
-    Card1Value: string  | number;
-    Card2Value: string  | number;
+    Card1Title: string | number;
+    Card2Title: string | number;
+    Card1Value: string | number;
+    Card2Value: string | number;
     style?: {
-        Card1backgroundColor?: "#ffffff" | "green" | "blue" | String;
-        Card2backgroundColor?: "#ffffff" | "green" | "blue" | String;
+        Card1backgroundColor?: "#ffffff" | string;
+        Card2backgroundColor?: "#ffffff" | string;
         width?: string | number;
         height?: string | number;
         Title1Color: "#ffffff" | string;
@@ -19,11 +19,10 @@ export type Props = {
         Value1Color: "#ffffff" | string;
         Value2Color: "#ffffff" | string;
     }
-
 }
 
 
-const CustomValueCard = (props:Props) => {
+const CustomValueCard = (props: Props) => {
 
     return (
         <>
@@ -32,10 +31,10 @@ const CustomValueCard = (props:Props) => {
                     <Text style={{ color: '#4DE0D9', margin: 10 }}> {props.Card1Title}</Text>
                     <Text style={{ color: '#ffffff', marginLeft: 10 }}>{props?.Card1Value}</Text>
                 </View>
-                <View style={{ height: 80, width: '45%', backgroundColor: props?.style?.Card2backgroundColor || "#1E2230" , borderRadius: 10 }}>
+                <View style={{ height: 80, width: '45%', backgroundColor: props?.style?.Card2backgroundColor || "#1E2230", borderRadius: 10 }}>
                     <Text style={{ color: '#4DE0D9', margin: 10 }}> {props.Card2Title}</Text>
                     <Text style={{ color: '#ffffff', marginLeft: 10 }}>{props?.Card2Value}</Text>
-                </View> 
+                </View>
             </View>
         </>
     )

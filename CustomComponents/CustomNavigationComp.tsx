@@ -1,27 +1,34 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, FlatList } from 'react-native';
+import { Switch } from 'react-native-paper';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export type Props = {
-    LeftIcon: String;
-    LeftIconColor: String;
-    LeftIconSize: Number;
-    RightIcon: String;
-    RightIconColor: String;
-    RightIconSize: Number;
-    title: String;
+    LeftIcon: string;
+    LeftIconColor: string;
+    LeftIconSize: number;
+    RightIcon: string;
+    RightIconColor: string;
+    RightIconSize: number;
+    title: string;
+    changeItem: boolean;
     style?: {
-        backgroundColor?: "red" | "green" | "blue" | String;
-        width?: String | Number;
-        height?: String | Number;
-        TextColor?: String;
-        fontsize: Number;
+        backgroundColor?: "red" | string;
+        width?: string | number;
+        height?: string | number;
+        TextColor?: string;
+        fontsize: number;
     }
     onp?: Function;
+    toggle?: Function;
+    isEnabled ?: boolean;
 }
 
 const CustomeNavigationComp = (props: Props) => {
+
+    const [changeItem, setChangeItem] = useState(props?.changeItem);
+
     return (
         <>
             <TouchableOpacity
@@ -35,17 +42,29 @@ const CustomeNavigationComp = (props: Props) => {
                 <View style={{ flex: 8, backgroundColor: '#1E2230', justifyContent: 'center' }}>
                     <Text style={{ fontSize: props?.style?.fontsize || 22, color: props?.style?.TextColor || '#ffffff' }}>{props?.title}</Text>
                 </View>
-                <View style={{ flex: 1.6, backgroundColor: '#1E2230', alignItems: 'center', justifyContent: 'center' }}>
-                    <Icon name={props?.RightIcon} size={props?.RightIconSize || 30} color={props?.RightIconColor || '#ffffff'} />
-                </View>
 
+                <TouchableOpacity style={{ flex: 1.6, backgroundColor: '#1E2230', alignItems: 'center', justifyContent: 'center' }}>
+                    {
+                        changeItem ?
+                            <Switch
+                                trackColor={{ false: '#767577', true: '#008b91' }}
+                                thumbColor={props.isEnabled ? 'cyan' : '#f4f3f4'}
+                                onValueChange={props?.toggle}
+                                value={props.isEnabled} style={{ height: 50 }}
+                                style={{
+                                    transform: [{ scaleX: 1.4 }, { scaleY: 1.4 }], // Scale the switch
+                                }}
+                            />
+                            :
+                            <Icon name={props?.RightIcon} size={props?.RightIconSize || 30} color={props?.RightIconColor || '#ffffff'} />
+                    }
+                </TouchableOpacity>
             </TouchableOpacity>
-
         </>
     );
 }
 
 // const styles = StyleSheet.create({
-    
+
 // })
 export default CustomeNavigationComp;

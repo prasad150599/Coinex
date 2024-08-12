@@ -61,13 +61,13 @@ const ForgotPassword = (prop: any) => {
             <ScrollView style={{ flex: 1, backgroundColor: '#191C26' }}>
 
                 <View style={{ flex: 1 }}>
-                    <CustomeScreen ScreenName={'Forgot Password'} imagePath={require('../../Resources/Images/ForgetPasswLogo.png')} SecondIcon={false} />
+                    <CustomeScreen ScreenName={'Forgot Password'} imagePath={require('../../Resources/Images/ForgetPasswLogo.png')} SecondIcon={false} ScreenLogo={false} IconName={""} />
                 </View>
 
                 <View style={{ flex: 2, marginTop: '10%' }}>
                     <Text style={styles.Text}>Choose a secure password that will be{'\n'}easy for you to remember..</Text>
                     <CustomInput iconName={'envelope'} placeholderText={'abcd@gmail.com'}
-                        secureText={false} typing={(text: any) => { setInputText(text); }} keyboardType={"email-address"} />
+                    secureText={false} typing={(text: any) => { setInputText(text); } } keyboardType={"email-address"} IconColor={'#FE8270'} />
 
                     {
                         showInfoText ? <Text style={styles.infoText}> Email set to {maskEmail(inputText)} </Text> : null

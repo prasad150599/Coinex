@@ -26,42 +26,29 @@ export type Props = {
 
 const Onboarding1 = (props: Props) => {
 
-    const navigation = useNavigation();
+    const navigation:any = useNavigation();
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#191C26' }}>
-
             <View style={styles.Container}>
-
                 <View style={styles.card}>
-
-                    
-
                     <View style={styles.imageView}>
                         <Image source={require('../../Resources/Images/image2.png')} style={styles.image} />
                     </View>
-
                     <View style={{ flex: 2, marginTop: 30, alignSelf: 'center' }}>
                         <View style={{ marginBottom: 20, marginTop: 20 }}>
                             <Text style={styles.BigText}>Welcome to </Text>
                             <Text style={styles.BigText}>Cryptocurrency</Text>
                         </View>
-
                         <Text style={styles.InfoText}>Reference site about Lorem</Text>
                         <Text style={styles.InfoText}>Ipsum, giving information origins</Text>
                     </View>
-
                     <View style={{ marginBottom: 20 }}>
                         <CustomButton title={'Get Started'} style={{ backgroundColor: '#34D9D1', }} />
                     </View>
-
                 </View>
-
                 <CustomButton title={'Skip'} style={{ width: '35%', }}
                  color1="#FF9BD0" color2="#FF73AA"  onp={()=>{navigation.navigate('WelcomeLogin');}} />
-
             </View>
-
-
         </SafeAreaView>
     );
 }

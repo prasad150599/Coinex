@@ -10,12 +10,20 @@ import { Screen } from 'react-native-screens';
 
 
 const SettingsScreen = () => {
-    const navigation = useNavigation();
+    const navigation:any = useNavigation();
+
+    const [isNewsEnabled, setIsNewsEnabled] = useState(false);
+    const [isMessageEnabled, setIsMessageEnabled] = useState(false);
+
+    const NewsSwitch =()=>{setIsNewsEnabled(isNewsEnabled => !isNewsEnabled)};
+    const MessageSwitch =()=>{setIsMessageEnabled(isMessageEnabled => !isMessageEnabled)};
+    
+    
     return (
         <View style={{ flex: 1 }}>
 
             <View style={{ flex: .6 }}>
-                <CustomeScreen ScreenName={'Settings'} style={{ TextMargin: 50 }} imagePath={undefined} SecondIcon={false} ScreenLogo={false} IconName={undefined} />
+                <CustomeScreen ScreenName={'Settings'} style={{ TextMargin: 50 }} imagePath={'undefined'} SecondIcon={false} ScreenLogo={false} IconName={'undefined'} />
             </View>
 {/* /'#191C26' ,#1E2230 */}
             <View style={{ flex: 1, justifyContent: 'center',backgroundColor: '#191C26' }}>
@@ -37,30 +45,27 @@ const SettingsScreen = () => {
 
             <View style={{ flex: 6, backgroundColor: '#191C26' }}>
 
-                <ScrollView style={{ width: '90%', height: 610, backgroundColor: '#1E2230', alignSelf: 'center', margin: 20, borderRadius: 10 }}>
-                    
+                <ScrollView showsVerticalScrollIndicator={false} style={{ width: '90%', height: 610, backgroundColor: '#1E2230', alignSelf: 'center', margin: 20, borderRadius: 10 }}>
                     <View style={{flex:1, backgroundColor: 'cyan', flexDirection: 'row', height: 50, alignItems: 'center',borderTopRightRadius:10,borderTopLeftRadius:10 }}>
                         <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#000000', marginLeft: 20 }}> Accounts </Text>
                     </View>
-
                     <View style={{flex:5,marginTop:10}}>
-                    <CustomeNavigationComp LeftIcon={'lock'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Change Password'}/>
-                    <CustomeNavigationComp LeftIcon={'bell'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Order Management'}/>
-                    <CustomeNavigationComp LeftIcon={'gear'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Document Management'}/>
-                    <CustomeNavigationComp LeftIcon={'paypal'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Pyment'}/>
-                    <CustomeNavigationComp LeftIcon={'sign-out'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Sign Out'} onp={()=>{navigation.navigate('AuthStack', { screen: 'SignIn' })}}/>
+                    <CustomeNavigationComp LeftIcon={'lock'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Change Password'} changeItem={false} />
+                    <CustomeNavigationComp LeftIcon={'bell'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Order Management'} changeItem={false} />
+                    <CustomeNavigationComp LeftIcon={'gear'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Document Management'} changeItem={false} />
+                    <CustomeNavigationComp LeftIcon={'paypal'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Pyment'} changeItem={false} />
+                    <CustomeNavigationComp LeftIcon={'sign-out'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Sign Out'} onp={() => { navigation.navigate('AuthStack', { screen: 'SignIn' }); } } changeItem={false} />
                     </View>
                     <View style={{flex:0.8,backgroundColor:'#4c5f7c',justifyContent:'center'}}>
                         <Text style={{fontSize:22,fontWeight:'bold',color:'#ffffff',marginLeft:20}}>More Settings</Text>
                     </View>
                     <View style={{flex:5,marginTop:10}}>
-                    <CustomeNavigationComp LeftIcon={'newspaper-o'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"toggle-on"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Newsletter'}/>
-                    <CustomeNavigationComp LeftIcon={'comments-o'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"toggle-off"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Messages'}/>
-                    <CustomeNavigationComp LeftIcon={'money'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Currency'}/>
-                    <CustomeNavigationComp LeftIcon={'language'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Language'}/>
-                    <CustomeNavigationComp LeftIcon={'link'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Linked Accounts'}/>
+                    <CustomeNavigationComp LeftIcon={'newspaper-o'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Newsletter'} changeItem={true} toggle={NewsSwitch} isEnabled={isNewsEnabled}/>
+                    <CustomeNavigationComp LeftIcon={'comments-o'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Messages'} changeItem={true} toggle={MessageSwitch} isEnabled={isMessageEnabled}/>
+                    <CustomeNavigationComp LeftIcon={'money'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Currency'} changeItem={false} />
+                    <CustomeNavigationComp LeftIcon={'language'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Language'} changeItem={false} />
+                    <CustomeNavigationComp LeftIcon={'link'} LeftIconColor={'#ffffff'} LeftIconSize={30} RightIcon={"chevron-right"} RightIconColor={"#ffffff"} RightIconSize={30} title={'Linked Accounts'} changeItem={false}/>
                     </View>
-                  {/* //toggle-off/on */}
                 </ScrollView>
 
             </View>

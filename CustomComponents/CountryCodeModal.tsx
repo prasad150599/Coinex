@@ -7,20 +7,6 @@ import { useEffect, useState } from "react";
 import { FlatList, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
-
-export type Props = {
-    visible : boolean;
-    // style?: {
-    //     backgroundColor?: "red" | "green" | "blue" | String;
-    //     width?: String | Number;
-    //     height?: String | Number;
-    // }
-    // iconName: String;
-    // secureText: boolean;
-    // placdeholderText: String;
-    // typing: Function
-}
-
 const CountryCode = [
     {
         "name": "Afghanistan",
@@ -192,52 +178,58 @@ const CountryCode = [
 
 
 
-const CountryCodeModal = (props: Props) => {
+const CountryCodeModal = (props: any) => {
 
     const [text, setText] = useState('');
-    const [selectedId, setSelectedId] = useState<string>();
-    const [modalVisible, setModalVisible] = useState(false)
+    const [selectedId, setSelectedId] = useState('');
+    const [modalVisible, setModalVisible] = useState(props?.visible)
 
     useEffect(() => {
         setModalVisible(props?.visible)
     }, [props?.visible])
 
+    const closeModal = () => {
+        setModalVisible(false);
+        props?.handleClose(false);
+        if (selectedId) {
+            props?.data(selectedId); // Notify parent with the selected country code
+        }
+    };
+
+    useEffect(() => {
+        closeModal();
+    }, [selectedId])
+
     const renderItem = ({ item }: any) => (
-        <TouchableOpacity  onPress={() => setSelectedId(item.dial_code)} style={{ flex: 1, height: 40, alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.8, }}>
+        <TouchableOpacity onPress={() => { setSelectedId(item.dial_code); closeModal() }}
+         style={{ flex: 1, height: 40, alignItems: 'center', flexDirection: 'row' }}>
             <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000' }}> {item.dial_code}</Text>
-            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000',textAlign:'center' }}> {item.name}</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', textAlign: 'center' }}> {item.name}</Text>
         </TouchableOpacity>
     );
 
 
     return (
-        <View style={styles.centeredView}>
-             <Modal
-                animationType="slide"
-                transparent={true}
-                visible={props?.visible}
-                onRequestClose={() => {
-                    // Alert.alert('Modal has been closed.');
-                    // setModalVisible(!modalVisible);
-                }}>
-                <View style={{ height: 300, width: 250,backgroundColor:'#ffffff', borderWidth: 1, borderRadius: 10, alignSelf: 'center', justifyContent: 'center', margin: 10 }}>
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', alignSelf: 'center' }}>Country Code </Text>
-                    
-                        <FlatList
-                            data={CountryCode}
-                            renderItem={renderItem}
-                        />
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#000000', }}>Selected: {selectedId} </Text>
-                    <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(false)  }>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
+       
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={closeModal}
+        >
+            <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                    <Text style={styles.modalTitle}>Country Code</Text>
+                    <FlatList
+                        data={CountryCode}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.code}
+                        showsVerticalScrollIndicator= {false}
+                    />
+                    {/* <Text style={styles.selectedText}>Selected: {selectedId}</Text> */}
                 </View>
-            </Modal>
-           
-        </View>
-
+            </View>
+        </Modal>
     );
 }
 
@@ -246,14 +238,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 22,
+        alignSelf: 'center'
     },
     modalView: {
-        margin: 20,
-        backgroundColor: 'white',
-        borderRadius: 20,
-        padding: 35,
-        // alignItems: 'center',
+        height: '60%',
+        width: '80%',
+        backgroundColor: '#4DE0D9',
+        borderRadius: 10,
+        padding: 20,
+        alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -263,6 +256,14 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
     },
+    modalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000000',
+        marginBottom: 10,
+        textAlign: 'center',
+    },
+
     button: {
         borderRadius: 20,
         padding: 10,
@@ -273,8 +274,9 @@ const styles = StyleSheet.create({
     },
     buttonClose: {
         backgroundColor: '#2196F3',
-        width:'40%',
-        alignSelf:'center'
+        width: '16%',
+        alignSelf: 'center',
+        textAlign: 'center'
     },
     textStyle: {
         color: 'white',
@@ -285,6 +287,12 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         // textAlign: 'center',
     },
+    selectedText: {
+        fontSize: 18,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        color: '#000000',
+    }
 });
 
 export default CountryCodeModal;

@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { PropsWithChildren } from 'react';
 import { Image, SafeAreaView, ScrollView, Settings, StyleSheet, Text, View, } from 'react-native';
 import Onboarding1 from './AppScreens/AuthScreens/Onboarding1';
@@ -22,13 +22,25 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from './AppScreens/SplashScreen';
 import HomeStack from './AppScreens/MainScreens/HomeStack';
 import AuthStack from './AppScreens/AuthScreens/AuthStack';
-
+import messaging from '@react-native-firebase/messaging'
+import { PaperProvider } from 'react-native-paper';
 
 const MainStack = createNativeStackNavigator();
 
+
+
 export default function App() {
 
+  // const getDeviceTOken =async()=>{
+  //   let token = await messaging().getToken();
+  //   console.log('Token is',token);
+  // }
+  // useEffect(()=>{
+  //   getDeviceTOken();
+  // },[])
+
   return (
+    <PaperProvider>
     <SafeAreaView style={{ flex: 1, backgroundColor: '#191C26', justifyContent: 'center' }}>
       <NavigationContainer>
         <MainStack.Navigator initialRouteName="SplashScreen">
@@ -38,6 +50,7 @@ export default function App() {
         </MainStack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
+    </PaperProvider>
   );
 }
 

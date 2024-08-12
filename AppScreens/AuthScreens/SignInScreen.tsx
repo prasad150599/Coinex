@@ -15,54 +15,52 @@ import { useNavigation } from '@react-navigation/native';
 import { Screen } from 'react-native-screens';
 import CustomeScreen from '../../CustomComponents/CustomScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import AuthStack from './AuthStack';
 
 
 
 const SignInScreen = (props: any) => {
 
-  const navigation = useNavigation();
-  const [username, setUsername] = useState('');
+  const navigation:any = useNavigation();
+  const [emailid, setEmailid] = useState('');
   const [password, setPassword] = useState('');
 
-  var name: string | null;
+  var email: string | null;
   var passw: string | null;
 
   const GetData = async () => {
-    name = await AsyncStorage.getItem('username')
+    email = await AsyncStorage.getItem('emailid')
     passw = await AsyncStorage.getItem('password')
-    // console.warn(name,passw)
+    
   }
 
   const AuthUserLogin = async () => {
     await GetData();
-    if ((username == name) && (password == passw)) {
+    if ((emailid == email) && (password == passw))
+       {
+        setEmailid('');
+        setPassword('');
       navigation.navigate('HomeStack', { screen: 'Home' })
     }
-    else {
-      console.warn('Username Or Password is Wrong !')
+    else 
+    {
       Alert.alert('Incorrect Username Or Password');
-
     }
   }
 
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
       <ScrollView style={styles.main}>
-
         <View style={styles.header}>
           <CustomeScreen ScreenName={'Sign In'} style={{ TextMargin: 50 }} imagePath={require('../../Resources/Images/Illustration.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
         </View>
-
-
         <View style={{ flex: 4, marginTop: '10%', }}>
-
           <CustomInput iconName={'envelope'} placeholderText={'e-mail'} secureText={false}
-            typing={(val: any) => { setUsername(val) }} keyboardType={'email-address'} IconColor={'#FE8270'} />
+          typing={(val: any) => { setEmailid(val); } } keyboardType={'email-address'} IconColor={'#FE8270'} value={emailid} />
 
           <CustomInput iconName={'lock'} placeholderText={'password'} secureText={true}
-            typing={(val: any) => { setPassword(val) }} keyboardType={'default'} IconColor={'#FE8270'} />
+          typing={(val: any) => { setPassword(val); } } keyboardType={'default'} IconColor={'#FE8270'} value={password} />
 
           <View style={styles.OptionView}>
             <View >
@@ -73,17 +71,12 @@ const SignInScreen = (props: any) => {
             }}>
               <Text style={{ fontSize: 16, color: '#FDAE67' }}>Forgot password ?</Text>
             </TouchableOpacity>
-
           </View>
           <CustomButton title={'Sign in'} onp={AuthUserLogin} />
-
         </View>
-
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: '10%' }}>
-
-          <Text style={{ fontSize: 16, color: '#ffffff' }}> Already have not an account? <Text style={{ fontSize: 16, color: '#FDAE67' }}>Sign Up !</Text></Text>
-        </View>
-
+        <TouchableOpacity  style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: '10%' }}>
+          <Text style={{ fontSize: 16, color: '#ffffff' }}> Don't have an account? <Text style={{ fontSize: 16, color: '#FDAE67' }}>Sign Up !</Text></Text>
+        </TouchableOpacity>
       </ScrollView>
     </TouchableWithoutFeedback>
   );

@@ -8,18 +8,15 @@ import { useNavigation } from '@react-navigation/native';
 
 
 export type Props = {
-  ScreenName: String;
+  ScreenName: string;
   style?: {
-  //   backgroundColor?: "red" | "green" | "blue" | String;
-  //   width?: String | Number;
-  //   height?: String | Number;
-       TextMargin: Number | String;
+       TextMargin: number | string;
   }
   onp?: Function;
-  imagePath: String;
-  SecondIcon: Boolean ;
-  ScreenLogo : Boolean;
-  IconName : String;
+  imagePath: string;
+  SecondIcon: boolean ;
+  ScreenLogo : boolean;
+  IconName : string;
 }
 
 
@@ -32,7 +29,7 @@ const CustomeScreen = (props: Props) => {
     <ScrollView style={{ flex: 1, backgroundColor: '#191C26' }}>
       <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
         <View style={{ flex: 1, justifyContent: 'center' }}>
-          {/* <BackButton back={props?.onp} /> */}
+          
           <BackButton back={() => navigation.goBack()} />
         </View>
         <View style={{ flex: 3, justifyContent: 'center' }}>
