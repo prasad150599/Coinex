@@ -1,18 +1,33 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import LinearGradient from 'react-native-linear-gradient';
 import WalletCard from '../../Components/WalletCard';
 import { useNavigation } from '@react-navigation/native';
 import { PaperProvider } from 'react-native-paper';
-import Portfolio from './Portfolio';
 import PortfolioCard from '../../Components/PortfolioCard';
+import { MMKV } from "react-native-mmkv";
 
+
+export const storage = new MMKV({
+    id: 'user1',
+    encryptionKey: 'bitex'
+  })
 
 
 
 const HomeScreen = () => {
+
+    const [user,setUser] = useState ('');
+
+    useEffect(()=>{
+        GetData();
+    },[])
+
+    const GetData = () => {
+        const Username : any=  storage.getString('user.name')
+        setUser(Username);
+      }
 
     const navigation:any = useNavigation();
     return (
@@ -22,7 +37,7 @@ const HomeScreen = () => {
                     <TouchableOpacity style={{ margin: '5%', alignSelf: 'flex-start' }} onPress={() => { navigation.navigate('Profile') }}>
                         <Icon name='menu' size={30} color='#ffffff' />
                     </TouchableOpacity>
-                    <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#4DE0D9', textAlign: 'center', margin: '5%' }}> Bitex</Text>
+                    <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#4DE0D9', textAlign: 'center', margin: '5%' }}> Coinex</Text>
                     <TouchableOpacity style={{ margin: '5%', alignSelf: 'flex-start' }} onPress={() => { navigation.navigate('Notification') }}>
                         <Icon name='bell' size={30} color='#ffffff' />
                     </TouchableOpacity>
@@ -31,7 +46,7 @@ const HomeScreen = () => {
                 <ScrollView style={{ flex: 4 }}>
 
                     <View style={{ flex: 1, margin: '5%' }}>
-                        <Text style={styles.UserName}>Hi User ,</Text>
+                        <Text style={styles.UserName}>Hi  {user},</Text>
                         <Text style={styles.GreetText}>Good Morning</Text>
                     </View>
                     <View style={{ width: '100%' }}>
@@ -189,3 +204,5 @@ export default HomeScreen;
                 
                 </TouchableOpacity>
                 </View> */}
+  //**************************************************************** */
+

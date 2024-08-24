@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { NavigationContainer } from '@react-navigation/native';
 
 export type Props = {
-    back:Function,
+    back:()=> void,
 }
 
 const BackButton = (props:Props) =>{

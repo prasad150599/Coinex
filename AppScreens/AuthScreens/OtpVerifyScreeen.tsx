@@ -5,31 +5,18 @@ import CustomButton from "../../CustomComponents/CustomButton";
 import CountryCodeModal from "../../CustomComponents/CountryCodeModal";
 import { useNavigation } from "@react-navigation/native";
 import OTPTextView from "react-native-otp-textinput";
+import CommonStyles from "../../Styles/CommonStyles";
 
 
 const OtpVerifyScreen = (prop: any) => {
 
     const navigation:any = useNavigation();
 
-    // const input1 = useRef(null);
-    // const input2 = useRef(null);
-    // const input3 = useRef(null);
-    // const input4 = useRef(null);
-
-    //    const clearText = () => {
-    //         otpInput.clear();
-    //     }
-
-    //     const setText = () => {
-    //         otpInput.setValue("1234");
-    //     }
-
-
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <ScrollView style={{ flex: 1, backgroundColor: '#191C26' }}>
                 <View style={{ flex: 2, }}>
-                    <CustomeScreen style={{ TextMargin: 20 }} ScreenName={'OTP Verification'} imagePath={require('../../Resources/Images/Illustration.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
+                    <CustomeScreen style={{ TextMargin: 20 }} ScreenName={'OTP Verification'} imagePath={require('../../Resources/Images/Illustration.png')} SecondIcon={false} ScreenLogo={true} IconName={''} />
                 </View>
                 <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{
@@ -45,14 +32,11 @@ const OtpVerifyScreen = (prop: any) => {
                             tintColor={'#111319'}
                         />
                     </View>
-                    <Text style={styles.infoText}>I didn't received the otp. {'\n'}
-                        <Text style={{ color: '#FE8270' }}>Resend OTP.</Text>
-                    </Text>
+                    <Text style={[CommonStyles.InfoText,{margin:20}]}>I didn't received the otp.</Text>
+                    <Text style={{ fontSize:18,color: '#FE8270',margin:10 }}>Resend OTP.</Text>
                     <Text style={styles.timeText}>1:20 sec left</Text>
                 </View>
                 <View style={{ flex: 1, justifyContent: 'center', marginTop: '10%' }}>
-
-                    {/* <CustomButton title={'Verify'} /> */}
                     <CustomButton title={'Verify'} onp={() => { navigation.navigate('SetUser') }} />
                 </View>
             </ScrollView>

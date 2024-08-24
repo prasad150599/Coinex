@@ -61,7 +61,7 @@ const SelectLocation = () => {
     const [countryItems, setCountryItems] = useState(countries);
     const [cityItems, setCityItems] = useState([]);
 
-    const handleCountryChange = useCallback((callback) => {
+    const handleCountryChange = useCallback((callback:any) => {
         setSelectedCountry(callback());
         setSelectedCity(null); // Reset city selection when country changes
         setCityItems(cities[callback()] || []); // Update cities based on selected country
@@ -71,7 +71,7 @@ const SelectLocation = () => {
 
         <View style={styles.container}>
             <View style={{ flex: 2}}>
-                <CustomeScreen ScreenName={'Select Location'} style={{TextMargin:20}} imagePath={require('../../Resources/Images/LocationLogo.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
+                <CustomeScreen ScreenName={'Select Location'} style={{TextMargin:20}} imagePath={require('../../Resources/Images/LocationLogo.png')} SecondIcon={false} ScreenLogo={true} IconName={''} />
             </View>
 
             <View style={{ flex: 2, justifyContent: 'flex-start'}}>

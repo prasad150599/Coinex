@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import HomeStack from '../MainScreens/HomeStack';
 import { Screen } from 'react-native-screens';
+import CommonStyles from '../../Styles/CommonStyles';
 
 
 export type Props = {
@@ -35,11 +36,11 @@ const WelcomeLogin = (props: Props) => {
                         <Text style={styles.BigText}>Cryptocurrency</Text>
                     </View>
                     <View style={{ marginBottom: 20, }}>
-                        <Text style={{ fontSize: 18, color: '#ffffff', textAlign: 'center' }}>Deliver your Order around the world {'\n'} without hesitation</Text>
+                        <Text style={CommonStyles.InfoText}>Deliver your Order around the world {'\n'}without hesitation</Text>
                     </View>
-                    <CustomButton title={'Login'} style={{ height: 60, width: '80%', }} color1="#C1B2FF" color2="#9B87FF"
+                    <CustomButton title={'Login'} style={{containerStyle:{ width: '80%'}, textStyle:{fontSize:20}}}  color1="#C1B2FF" color2="#9B87FF"
                         onp={() => { navigation.navigate('SignIn') }} />
-                    <CustomButton title={'Register'} style={{ height: 60, width: '80%' }}
+                    <CustomButton title={'Register'}  style={{containerStyle:{ width: '80%'}, textStyle:{fontSize:20}}}
                         onp={() => { navigation.navigate('SignInMob') }} />
                 </View>
             </View>

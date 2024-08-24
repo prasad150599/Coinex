@@ -81,16 +81,16 @@ const MarketTrends = () => {
                             style={{ TextMargin: 20 }}
                             imagePath={undefined}
                             SecondIcon={false}
-                            ScreenLogo={false}
-                        />
+                            ScreenLogo={false} IconName={''} 
+                            />
                         <CustomInput
                             iconName="search"
                             placeholderText="Search"
                             secureText={false}
-                            typing={(text:any) => { text }}
+                            typing={(text: any) => { text } }
                             keyboardType="default"
-                            IconColor="#4DE0D9"
-                        />
+                            IconColor="#4DE0D9" value={''}        
+                             />
                     </View>
                     <View style={styles.listContainer}>
                         

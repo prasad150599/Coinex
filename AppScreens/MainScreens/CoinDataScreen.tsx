@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import CustomeScreen from '../../CustomComponents/CustomScreen';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomButton from '../../CustomComponents/CustomButton';
-import Chart from '../../CustomComponents/ChartComponent';
+import Chart from '../../Components/ChartComponent';
 import CustomValueCard from '../../CustomComponents/CustomeValueCard';
 
 const CoinDataScreen = (props: any) => {
@@ -13,7 +13,7 @@ const CoinDataScreen = (props: any) => {
     const coin = props?.data
     const [text, setText] = useState('');
     const [modalVisible, setModalVisible] = useState(props?.visible)
-    const [favourite,setFavourite] = useState(true)
+    const [favourite,setFavourite] = useState(false)
 
     useEffect(() => {
         setModalVisible(props?.visible)
@@ -59,7 +59,7 @@ const CoinDataScreen = (props: any) => {
 
                             <View style={styles.ChartOptionsView}>
                                 <View style={{ flex: 1 }}>
-                                    <CustomButton title={'Average'} style={{ width: '60%', height: 40, fontsize: 20 }} />
+                                    <CustomButton title={'Average'}  style={{containerStyle:{ width: '60%',height:40}, textStyle:{fontSize:20}}} />
                                 </View>
                                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                     <LinearGradient colors={['#FFD5CF', '#FE8270']}
@@ -88,8 +88,8 @@ const CoinDataScreen = (props: any) => {
                         </View>
                     </View>
                     <View style={{ flex: 1, backgroundColor: '#191C26', flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                        <CustomButton title={'Sell'} style={{ width: '45%' }} color1='#C1B2FF' color2='#9B87FF' />
-                        <CustomButton title={'Buy'} style={{ width: '45%' }} />
+                        <CustomButton title={'Sell'} style={{containerStyle:{ width: '45%'} }} color1='#C1B2FF' color2='#9B87FF' />
+                        <CustomButton title={'Buy'} style={{containerStyle:{ width: '45%'}  }} />
                     </View>
                 </View>
             </Modal>

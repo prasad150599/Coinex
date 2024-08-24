@@ -1,8 +1,3 @@
-// import * as React from 'react';
-// import { useEffect, useState } from 'react';
-// import { View, FlatList, ScrollView, StatusBar, Text, TouchableOpacity, Modal } from 'react-native';
-// import { NavigationContainer } from '@react-navigation/native';
-
 import { useEffect, useState } from "react";
 import { FlatList, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -243,7 +238,7 @@ const styles = StyleSheet.create({
     modalView: {
         height: '60%',
         width: '80%',
-        backgroundColor: '#4DE0D9',
+        backgroundColor: '#ffffff',
         borderRadius: 10,
         padding: 20,
         alignItems: 'center',

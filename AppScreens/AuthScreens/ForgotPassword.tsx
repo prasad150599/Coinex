@@ -6,32 +6,14 @@ import CountryCodeModal from "../../CustomComponents/CountryCodeModal";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomInput from "../../CustomComponents/CustomInput";
 import { useNavigation } from "@react-navigation/native";
+import CommonStyles from "../../Styles/CommonStyles";
 
 
 const ForgotPassword = (prop: any) => {
 
     const navigation = useNavigation();
-
-    // const [has8Char, setHas8Char] = useState(false)
-    // const [hasUppercaseSym, setHasUppercaseSym] = useState(false)
-    // const [hasNumber, setHasNumber] = useState(false)
     const [inputText, setInputText] = useState('');
     const [showInfoText, SetShowInfoText] = useState(false);
-
-    // const hasnumber = (text: string) => {
-    //     const regex = /[1-9]/;
-    //     return regex.test(text);
-    // };
-
-    // const check8CharLen = (text: any) => {
-    //     return text.length >= 8;
-    // }
-
-    // const hasSymbol = (text: any) => {
-    //     // Regular expression to check for uppercase letters or symbols
-    //     const regex = /[A-Z!@#$%^&*(),.?":{}|<>]/;
-    //     return regex.test(text);
-    // };
 
     useEffect(() => {
         setTimeout(() => {
@@ -61,13 +43,16 @@ const ForgotPassword = (prop: any) => {
             <ScrollView style={{ flex: 1, backgroundColor: '#191C26' }}>
 
                 <View style={{ flex: 1 }}>
-                    <CustomeScreen ScreenName={'Forgot Password'} imagePath={require('../../Resources/Images/ForgetPasswLogo.png')} SecondIcon={false} ScreenLogo={false} IconName={""} />
+                    <CustomeScreen ScreenName={'Forgot Password'} 
+                    imagePath={require('../../Resources/Images/ForgetPasswLogo.png')}
+                     SecondIcon={false} ScreenLogo={true} IconName={""} />
                 </View>
 
                 <View style={{ flex: 2, marginTop: '10%' }}>
-                    <Text style={styles.Text}>Choose a secure password that will be{'\n'}easy for you to remember..</Text>
+                    <Text style={[CommonStyles.InfoText]}> we will send a mail to the email address{'\n'} registered with us.</Text>
                     <CustomInput iconName={'envelope'} placeholderText={'abcd@gmail.com'}
-                    secureText={false} typing={(text: any) => { setInputText(text); } } keyboardType={"email-address"} IconColor={'#FE8270'} />
+                    secureText={false} typing={(text: any) => { setInputText(text); } }
+                     keyboardType={"email-address"} IconColor={'#FE8270'} value={""} />
 
                     {
                         showInfoText ? <Text style={styles.infoText}> Email set to {maskEmail(inputText)} </Text> : null

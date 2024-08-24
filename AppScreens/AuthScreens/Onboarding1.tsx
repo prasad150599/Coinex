@@ -12,19 +12,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
 
-export type Props = {
-    // title1: String;
-    // title2: String;
-    // pageNo: Number | string;
-    // style?: {
-    //     backgroundColor?: "red" | "green" | "blue" | String;
-    //     width?: String | Number;
-    //     height?: String | Number;
-    // }
-    // onp?: Function;
-}
 
-const Onboarding1 = (props: Props) => {
+
+const Onboarding1 = () => {
 
     const navigation:any = useNavigation();
     return (

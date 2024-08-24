@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomInput from "../../CustomComponents/CustomInput";
 import { useNavigation } from "@react-navigation/native";
 import { MMKV } from "react-native-mmkv";
+import CommonStyles from "../../Styles/CommonStyles";
 
 
 export const storage = new MMKV({
@@ -36,7 +37,7 @@ const CreatePassword = (prop: any) => {
     };
 
     const SetData = async () => {
-        storage.set('password', password);
+        storage.set('user.password', password);
     }
 
     function SavePassword() {
@@ -54,14 +55,14 @@ const CreatePassword = (prop: any) => {
 
             <ScrollView style={{ flex: 1, backgroundColor: '#191C26' }}>
                 <View style={{ flex: 1 }}>
-                    <CustomeScreen ScreenName={'Create Password'} style={{ TextMargin: 10 }} imagePath={require('../../Resources/Images/PasswScreenLogo.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
+                    <CustomeScreen ScreenName={'Create Password'} style={{ TextMargin: 10 }} imagePath={require('../../Resources/Images/PasswScreenLogo.png')} SecondIcon={false} ScreenLogo={true} IconName={''} />
                 </View>
 
                 <View style={{ flex: 2, marginTop: '10%' }}>
-                    <Text style={{ margin: 10, color: '#ffffff', fontSize: 18, alignSelf: 'center' }}>Choose a secure password that will be{'\n'}easy for you to remember..</Text>
+                    <Text style={CommonStyles.InfoText}>Choose a secure password that will be{'\n'}easy for you to remember..</Text>
 
                     <CustomInput iconName={'eye'} placeholderText={'Password'} secureText={true} typing={(text: any) => { setPassword(text); } }
-                    keyboardType={"default"} IconColor={'#FE8270'} style={{ backgroundColor: '#111319' }} value={password}/>
+                    keyboardType={"default"} IconColor={'#FE8270'} value={password}/>
 
                     <View style={{ justifyContent: 'center', alignItems: 'flex-start', alignSelf: 'center', margin: '10%' }}>
                         <Text style={{ fontSize: 18, color: check8CharLen(password) ? '#4DE0D9' : '#ffffff' }}>

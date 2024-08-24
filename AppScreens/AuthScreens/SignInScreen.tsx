@@ -8,44 +8,48 @@
 import React, { useState } from 'react';
 import { Alert, Image, Keyboard, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, } from 'react-native';
 import CustomButton from '../../CustomComponents/CustomButton';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import BackButton from '../../CustomComponents/BackButton';
 import CustomInput from '../../CustomComponents/CustomInput';
 import { useNavigation } from '@react-navigation/native';
-import { Screen } from 'react-native-screens';
 import CustomeScreen from '../../CustomComponents/CustomScreen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import AuthStack from './AuthStack';
+import { MMKV } from 'react-native-mmkv';
+import { Button, Dialog, Portal } from 'react-native-paper';
 
+
+export const storage = new MMKV({
+  id: 'user1',
+  encryptionKey: 'bitex'
+})
 
 
 const SignInScreen = (props: any) => {
 
-  const navigation:any = useNavigation();
+  const navigation: any = useNavigation();
   const [emailid, setEmailid] = useState('');
   const [password, setPassword] = useState('');
+  const [visible, setVisible] = useState(false);
 
-  var email: string | null;
-  var passw: string | null;
+  const showDialog = () => setVisible(true);
+  const hideDialog = () => setVisible(false);
 
-  const GetData = async () => {
-    email = await AsyncStorage.getItem('emailid')
-    passw = await AsyncStorage.getItem('password')
-    
+  let email: any;
+  let passw: any;
+
+  const GetData = () => {
+    email = storage.getString('user.email')
+    passw = storage.getString('user.password')
   }
 
-  const AuthUserLogin = async () => {
-    await GetData();
-    if ((emailid == email) && (password == passw))
-       {
-        setEmailid('');
-        setPassword('');
+  const AuthUserLogin = () => {
+    GetData();
+    if ((emailid == email) && (password == passw)) {
+      setEmailid('');
+      setPassword('');
       navigation.navigate('HomeStack', { screen: 'Home' })
     }
-    else 
-    {
-      Alert.alert('Incorrect Username Or Password');
+    else if(emailid != email && password != passw){
+      showDialog();
     }
+   
   }
 
 
@@ -53,14 +57,14 @@ const SignInScreen = (props: any) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ScrollView style={styles.main}>
         <View style={styles.header}>
-          <CustomeScreen ScreenName={'Sign In'} style={{ TextMargin: 50 }} imagePath={require('../../Resources/Images/Illustration.png')} SecondIcon={false} ScreenLogo={true} IconName={undefined} />
+          <CustomeScreen ScreenName={'Sign In'} style={{ TextMargin: 50 }} imagePath={require('../../Resources/Images/Illustration.png')} SecondIcon={false} ScreenLogo={true} IconName={'undefined'} />
         </View>
-        <View style={{ flex: 4, marginTop: '10%', }}>
+        <View style={{ flex: 4, marginTop: '10%', }}> 
           <CustomInput iconName={'envelope'} placeholderText={'e-mail'} secureText={false}
-          typing={(val: any) => { setEmailid(val); } } keyboardType={'email-address'} IconColor={'#FE8270'} value={emailid} />
+            typing={(val: any) => { setEmailid(val); }} keyboardType={'email-address'} IconColor={'#FE8270'} value={emailid} />
 
           <CustomInput iconName={'lock'} placeholderText={'password'} secureText={true}
-          typing={(val: any) => { setPassword(val); } } keyboardType={'default'} IconColor={'#FE8270'} value={password} />
+            typing={(val: any) => { setPassword(val); }} keyboardType={'default'} IconColor={'#FE8270'} value={password} />
 
           <View style={styles.OptionView}>
             <View >
@@ -72,11 +76,23 @@ const SignInScreen = (props: any) => {
               <Text style={{ fontSize: 16, color: '#FDAE67' }}>Forgot password ?</Text>
             </TouchableOpacity>
           </View>
+         
           <CustomButton title={'Sign in'} onp={AuthUserLogin} />
         </View>
-        <TouchableOpacity  style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: '10%' }}>
+        <TouchableOpacity style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: '10%' }}>
           <Text style={{ fontSize: 16, color: '#ffffff' }}> Don't have an account? <Text style={{ fontSize: 16, color: '#FDAE67' }}>Sign Up !</Text></Text>
         </TouchableOpacity>
+        <Portal>
+          <Dialog visible={visible} onDismiss={hideDialog}>
+            <Dialog.Title>Required</Dialog.Title>
+            <Dialog.Content>
+              <Text style={styles.bodyMedium}>wrong email or password.</Text>
+            </Dialog.Content>
+            <Dialog.Actions>
+              <Button onPress={() => {hideDialog()}}>ok</Button>
+            </Dialog.Actions>
+          </Dialog>
+        </Portal>
       </ScrollView>
     </TouchableWithoutFeedback>
   );
@@ -111,7 +127,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     marginBottom: '1%'
-  }
+  },
+  bodyMedium: {
+    fontSize: 16,  
+    color: '#ffffff', 
+}
 
 });
 

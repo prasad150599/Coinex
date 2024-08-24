@@ -69,7 +69,8 @@ const Portfolio = () => {
 
                     <View style={{ width: '90%', height: 160, backgroundColor: '#363D4E', alignSelf: 'center', borderRadius: 20 }}>
                         <View style={{ margin: 10, alignSelf: 'flex-start' }}>
-                            <CustomButton title={'BTC/USD'} style={{ width: 110, height: 40, fontsize: 18 }} color1="#C1B2FF" color2="#9B87FF" />
+                            <CustomButton title={'BTC/USD'}  style={{containerStyle:{ width: 110,height:40}, textStyle:{fontSize:18}}}
+                             color1="#C1B2FF" color2="#9B87FF" />
                         </View>
                         <View style={{ flexDirection: 'row' }}>
                             <View style={{ flex: 2, alignItems: 'flex-start' }}>
@@ -77,13 +78,16 @@ const Portfolio = () => {
                                 <Text style={{ marginTop: 14, marginLeft: 20, fontSize: 14, color: '#ffffff' }}>+ $120.97 (+3.46%)</Text>
                             </View>
                             <View style={{ marginRight: 20 }}>
-                                <CustomButton title={'Add Balance'} style={{ width: 120, height: 40, fontsize: 17 }} color1="#FF9BD0" color2="#FF73AA" />
+                                <CustomButton title={'Add Balance'} style={{containerStyle:{ width: 120,height:40}, textStyle:{fontSize:18}}} color1="#FF9BD0" color2="#FF73AA" />
                             </View>
                         </View>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', height: 100, width: '100%' }}>
-                        <CustomButton title={'Highest Holding'} style={{ width: '46%', height: 50, fontsize: 20 }} />
-                        <CustomButton title={'24 Hours'} style={{ width: '48%', height: 50, fontsize: 20 }} color1='#C1B2FF' color2='#9B87FF' />
+                   
+                        <CustomButton title={'Highest Holding'}
+                         style={{containerStyle:{ width: '46%'}, textStyle:{fontSize:20}}} />
+                        <CustomButton title={'24 Hours'} style={{containerStyle:{ width: '46%'}, textStyle:{fontSize:20}}}
+                          color1='#C1B2FF' color2='#9B87FF' />
                     </View>
                 </View>
 

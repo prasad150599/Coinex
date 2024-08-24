@@ -56,8 +56,8 @@ const SplashScreen = ({ navigation }: any) => {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#191C26' }}>
       <TouchableOpacity style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
         <Image source={require('../Resources/Images/Logo.png')} style={{ height: 206, width: 206 }} />
-        <Text style={{ fontSize: 50, color: '#4DE0D9', fontWeight: '700' }}>
-          Bitex
+        <Text style={{ fontSize: 50, color: '#4DE0D9', fontWeight: '700',margin:20 }}>
+          Coinex
         </Text>
         <View style={styles.progressBar}>
           <View style={[styles.progress, { width: `${progress}%` }]} />
